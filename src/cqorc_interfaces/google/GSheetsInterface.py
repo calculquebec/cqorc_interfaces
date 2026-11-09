@@ -4,27 +4,28 @@ import logging
 import os
 
 try:
-    from interfaces.google.GoogleInterface import GoogleInterface
-    from interfaces.google.GDriveInterface import GDriveInterface
-except:
+    from .GoogleInterface import GoogleInterface
+    from .GDriveInterface import GDriveInterface
+except ImportError:
     from GoogleInterface import GoogleInterface
     from GDriveInterface import GDriveInterface
 
 from googleapiclient.errors import HttpError
 
 class GSheetsInterface(GoogleInterface):
-    def __init__(self, key_file, credentials_type='user'):
+    def __init__(self, key_file, credentials_type='user', **kwargs):
         # liste des scopes https://developers.google.com/identity/protocols/oauth2/scopes#sheets
-        super(GSheetsInterface, self).__init__(key_file, credentials_type, 'sheets', 'v4', ['https://www.googleapis.com/auth/spreadsheets'])
+        super(GSheetsInterface, self).__init__(key_file, credentials_type, 'sheets', 'v4', ['https://www.googleapis.com/auth/spreadsheets'], **kwargs)
         # maximum of 26 columns to update
         self.default_range = "A:Z"
         self.logger = logging.getLogger(__name__)
         self.gdrive = None
+        self._gdrive_kwargs = kwargs
 
 
     def get_gdrive(self):
         if not self.gdrive:
-            self.gdrive = GDriveInterface(self.key_file)
+            self.gdrive = GDriveInterface(self.key_file, **self._gdrive_kwargs)
         return self.gdrive
 
 

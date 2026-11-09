@@ -5,14 +5,14 @@ import os
 import pytz
 
 try:
-    from interfaces.google.GoogleInterface import GoogleInterface
-except:
+    from .GoogleInterface import GoogleInterface
+except ImportError:
     from GoogleInterface import GoogleInterface
 from googleapiclient.errors import HttpError
 
 class GCalInterface(GoogleInterface):
-    def __init__(self, key_file, calendar_id, timezone = "America/Montreal", credentials_type='user'):
-        super(GCalInterface, self).__init__(key_file, credentials_type, 'calendar', 'v3', ['https://www.googleapis.com/auth/calendar.events', 'https://www.googleapis.com/auth/calendar.events.freebusy'])
+    def __init__(self, key_file, calendar_id, timezone = "America/Montreal", credentials_type='user', **kwargs):
+        super(GCalInterface, self).__init__(key_file, credentials_type, 'calendar', 'v3', ['https://www.googleapis.com/auth/calendar.events', 'https://www.googleapis.com/auth/calendar.events.freebusy'], **kwargs)
         self.logger = logging.getLogger(__name__)
         self.calendar_id = calendar_id
         self.timezone = timezone

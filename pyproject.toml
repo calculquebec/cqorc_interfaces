@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cqorc_interfaces"
+version = "0.1.0"
+description = "Reusable API interfaces for Google (Drive, Sheets, Calendar), Eventbrite, Zoom, and Slack"
+readme = "README.md"
+authors = [
+    { name = "Calcul Québec" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.optional-dependencies]
+google = [
+    "google-api-core>=2.0.0",
+    "google-api-python-client>=2.0.0",
+    "google-auth>=2.0.0",
+    "google-auth-httplib2",
+    "google-auth-oauthlib",
+    "googleapis-common-protos",
+    "oauth2client>=4.0.0",
+    "pytz",
+]
+eventbrite = [
+    "eventbrite>=3.3.5",
+    "requests>=2.28.2",
+]
+slack = [
+    "slack-sdk>=3.0.0",
+]
+zoom = [
+    "requests>=2.28.2",
+    "pytz",
+]
+test = [
+    "pytest",
+    "hypothesis",
+]
+all = [
+    "cqorc_interfaces[google,eventbrite,slack,zoom]",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

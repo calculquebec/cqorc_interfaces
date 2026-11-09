@@ -9,7 +9,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from google.auth.transport.requests import Request
 
 class GoogleInterface:
-    def __init__(self, key_file, credentials_type, service_name, service_version, scopes):
+    def __init__(self, key_file, credentials_type, service_name, service_version, scopes, secrets_dir=None, token_file=None):
         assert credentials_type in ["user", "service"], f'credentials_type should be either "user" or "service", found {credentials_type}'
         assert os.path.exists(key_file), f'key file should exist, {key_file} does not exist'
         assert isinstance(service_name, str), f"service_name should be a string, found {service_name}"
@@ -23,8 +23,12 @@ class GoogleInterface:
         self.credentials_type = credentials_type
         self.service_name = service_name
         self.service_version = service_version
-        token_file_name = "token_%s_%s.json" % (self.service_name, self.service_version)
-        self.token_file = os.path.join(os.getenv('CQORC_SECRETS_DIR', './secrets'), token_file_name)
+        if token_file:
+            self.token_file = token_file
+        else:
+            token_file_name = "token_%s_%s.json" % (self.service_name, self.service_version)
+            base_dir = secrets_dir or os.getenv('CQORC_SECRETS_DIR', './secrets')
+            self.token_file = os.path.join(base_dir, token_file_name)
 
 
     def get_credentials(self):

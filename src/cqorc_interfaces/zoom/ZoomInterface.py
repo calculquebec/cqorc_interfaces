@@ -307,32 +307,28 @@ class ZoomInterface:
 
 
 def main():
-    '''Simple demonstration of the Zoom Interface
+    '''Simple demonstration of the Zoom Interface'''
 
-    Usage from the root directory of the project:
-    PYTHONPATH=$PWD python interfaces/zoom/ZoomInterface.py
-    '''
+    import os
+    import configparser
 
-    from common import get_config
-    import pytz
+    config = configparser.ConfigParser()
+    config_file = os.environ.get('ZOOM_CONFIG_FILE', 'config.ini')
+    if os.path.exists(config_file):
+        config.read(config_file)
+        zoom_cfg = config['zoom']
+        timezone = config.get('global', 'timezone', fallback='America/Montreal')
 
-    class DefaultArgs:
-        '''Some attributes with default values for get_config()'''
-        config_dir = '.'
-        secrets_dir = '.'
-
-    # Get all configured values
-    config = get_config(DefaultArgs())
-    zoom_cfg = config['zoom']
-    tzinfo = pytz.timezone(config['global']['timezone'])
-
-    # Create the Zoom interface object
-    zoom = ZoomInterface(
-        account_id = zoom_cfg['account_id'],
-        client_id = zoom_cfg['client_id'],
-        client_secret = zoom_cfg['client_secret'],
-        timezone = config['global']['timezone'],
-        user = zoom_cfg['user'])
+        # Create the Zoom interface object
+        zoom = ZoomInterface(
+            account_id = zoom_cfg['account_id'],
+            client_id = zoom_cfg['client_id'],
+            client_secret = zoom_cfg['client_secret'],
+            timezone = timezone,
+            user = zoom_cfg.get('user', 'me'))
+        print("Zoom interface initialized successfully.")
+    else:
+        print(f"Configuration file not found: {config_file}. Set ZOOM_CONFIG_FILE to test.")
 
     # Create one meeting
     '''

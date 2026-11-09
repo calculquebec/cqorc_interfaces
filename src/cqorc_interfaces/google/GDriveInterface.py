@@ -4,15 +4,15 @@ import logging
 import os
 
 try:
-    from interfaces.google.GoogleInterface import GoogleInterface
-except:
+    from .GoogleInterface import GoogleInterface
+except ImportError:
     from GoogleInterface import GoogleInterface
 from googleapiclient.errors import HttpError
 
 class GDriveInterface(GoogleInterface):
-    def __init__(self, key_file, credentials_type='user'):
+    def __init__(self, key_file, credentials_type='user', **kwargs):
         # liste des scopes https://developers.google.com/identity/protocols/oauth2/scopes#drive
-        super(GDriveInterface, self).__init__(key_file, credentials_type, 'drive', 'v3', ['https://www.googleapis.com/auth/drive.file'])
+        super(GDriveInterface, self).__init__(key_file, credentials_type, 'drive', 'v3', ['https://www.googleapis.com/auth/drive.file'], **kwargs)
         self.logger = logging.getLogger(__name__)
 
 
