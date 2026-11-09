@@ -11,20 +11,20 @@ Originally developed by Calcul Québec for training and event logistics automati
 You can install a tagged version directly from GitHub using `@<version>`:
 
 ```bash
-# Install everything for version v0.1.0:
-pip install "cqorc_interfaces[all] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
+# Install everything for version v0.1.1:
+pip install "cqorc_interfaces[all] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.1"
 
-# Or install only specific interface dependencies for v0.1.0:
-pip install "cqorc_interfaces[google] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
-pip install "cqorc_interfaces[slack] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
-pip install "cqorc_interfaces[zoom] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
-pip install "cqorc_interfaces[eventbrite] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
+# Or install only specific interface dependencies for v0.1.1:
+pip install "cqorc_interfaces[google] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.1"
+pip install "cqorc_interfaces[slack] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.1"
+pip install "cqorc_interfaces[zoom] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.1"
+pip install "cqorc_interfaces[eventbrite] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.1"
 ```
 
 In a `requirements.txt` file:
 
 ```text
-cqorc_interfaces[all] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0
+cqorc_interfaces[all] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.1
 ```
 
 ### Install the Latest Version (`main`)

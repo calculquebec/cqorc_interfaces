@@ -305,6 +305,8 @@ class ZoomInterface:
 
         return all_participants
 
+ZoomInterface.ZoomInterface = ZoomInterface
+
 
 def main():
     '''Simple demonstration of the Zoom Interface'''

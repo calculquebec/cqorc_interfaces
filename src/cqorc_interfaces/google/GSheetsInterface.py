@@ -282,7 +282,7 @@ class GSheetsInterface(GoogleInterface):
             self.logger.error(f"An error occurred: {error}")
             raise error
 
-
+GSheetsInterface.GSheetsInterface = GSheetsInterface
 
 
 def main():

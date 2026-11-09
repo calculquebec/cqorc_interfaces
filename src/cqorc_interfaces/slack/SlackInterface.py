@@ -288,6 +288,8 @@ class SlackInterface:
         except SlackApiError as e:
             self.logger.error(f"Error archiving channel: {e}")
 
+SlackInterface.SlackInterface = SlackInterface
+
 
 
 def main():

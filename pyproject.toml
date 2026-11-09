@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cqorc_interfaces"
-version = "0.1.0"
+version = "0.1.1"
 description = "Reusable API interfaces for Google (Drive, Sheets, Calendar), Eventbrite, Zoom, and Slack"
 readme = "README.md"
 authors = [

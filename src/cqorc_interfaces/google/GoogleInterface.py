@@ -89,5 +89,7 @@ class GoogleInterface:
 
         return self.service
 
+GoogleInterface.GoogleInterface = GoogleInterface
+
 
 

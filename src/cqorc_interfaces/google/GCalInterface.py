@@ -221,6 +221,8 @@ class GCalInterface(GoogleInterface):
             self.logger.error('FreeBusy query error: %s' % error)
             raise error
 
+GCalInterface.GCalInterface = GCalInterface
+
 
 def main():
     import configparser

@@ -396,6 +396,8 @@ class EventbriteInterface(eb.Eventbrite):
         """
         return self.get_event_attendees_by_status(event_id, status_filter=('checked in', 'attended'), fields=fields)
 
+EventbriteInterface.EventbriteInterface = EventbriteInterface
+
 if __name__ == '__main__':
     from glob import glob
 

@@ -104,6 +104,8 @@ class GDriveInterface(GoogleInterface):
     def get_file_url(self, file_id):
         return self.get_file(file_id, "webViewLink")["webViewLink"]
 
+GDriveInterface.GDriveInterface = GDriveInterface
+
 
 def main():
     import configparser
