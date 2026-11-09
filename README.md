@@ -6,17 +6,31 @@ Originally developed by Calcul Québec for training and event logistics automati
 
 ## Installation
 
-Install the package directly from GitHub:
+### Install a Specific Version (Recommended)
+
+You can install a tagged version directly from GitHub using `@<version>`:
 
 ```bash
-# Install everything:
-pip install "cqorc_interfaces[all] @ git+https://github.com/calculquebec/cqorc_interfaces.git"
+# Install everything for version v0.1.0:
+pip install "cqorc_interfaces[all] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
 
-# Or install only specific interface dependencies:
-pip install "cqorc_interfaces[google] @ git+https://github.com/calculquebec/cqorc_interfaces.git"
-pip install "cqorc_interfaces[slack] @ git+https://github.com/calculquebec/cqorc_interfaces.git"
-pip install "cqorc_interfaces[zoom] @ git+https://github.com/calculquebec/cqorc_interfaces.git"
-pip install "cqorc_interfaces[eventbrite] @ git+https://github.com/calculquebec/cqorc_interfaces.git"
+# Or install only specific interface dependencies for v0.1.0:
+pip install "cqorc_interfaces[google] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
+pip install "cqorc_interfaces[slack] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
+pip install "cqorc_interfaces[zoom] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
+pip install "cqorc_interfaces[eventbrite] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0"
+```
+
+In a `requirements.txt` file:
+
+```text
+cqorc_interfaces[all] @ git+https://github.com/calculquebec/cqorc_interfaces.git@v0.1.0
+```
+
+### Install the Latest Version (`main`)
+
+```bash
+pip install "cqorc_interfaces[all] @ git+https://github.com/calculquebec/cqorc_interfaces.git@main"
 ```
 
 For local editable development:
